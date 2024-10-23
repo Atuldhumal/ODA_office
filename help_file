@@ -1,0 +1,21 @@
+Add Dependancy in pom. xml
+                1)Spring Web 
+                2)Thymeleaf 
+                3)PostgreSQL Driver
+                4)Spring Boot DevTools 
+                5)Spring Data JPA 
+                6)Validation
+                7)Lombok
+
+Database configrugation in application.properties
+
+create Controller in src/main/java/com.oda.oda and also create html file for route
+
+
+install/ setup tailwind css (node should be install in Windows)
+          1)open tailwind official side in google =>
+          2)for npm "installnpm install -D tailwindcss"
+          3)npx tailwindcss init
+          4)crete input.css 
+          5)npx tailwindcss -i ./src/main/resources/static/css/input.css -o ./src/main/resources/static/css/output.css --watch
+          

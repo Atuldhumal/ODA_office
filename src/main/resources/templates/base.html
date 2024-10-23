@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="light" lang="en" th:fragment="parent(content,title)" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-th-replace="${title}">SCM</title>
+    <!-- tailwind css for base  -->
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
+    <!-- google button css -->
+    <link rel="stylesheet" data-th-href="@{'/css/Style.css'}" />
+    <!-- flow bite cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <!-- font awsom for icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="dark:bg-gray-900 bg-gray-100 dark:text-white">
+    <!-- common header -->
+    <div data-th-replace="~{header_navbar :: navbar}">
+
+    </div>
+
+    <!-- common header end -->
+
+    <!-- main content -->
+    <section class="p-4 h-screen w-full " data-th-replace="${content}"></section>
+    <!-- Main content end -->
+
+    <!-- common footer -->
+
+
+    <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://omdanceacademy.com/"
+                    class="hover:underline">OM DANCE ACADEMY™</a>. All Rights Reserved.
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                    <a data-th-href="@{'/about'}" class="hover:underline me-4 md:me-6">About</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                </li>
+                <li>
+                    <a href="https://omdanceacademy.com/contact" class="hover:underline">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- common footer end -->
+
+    <!-- flow bite script -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script data-th-src="@{'/js/script.js'}">
+
+    </script>
+</body>
+
+</html>
