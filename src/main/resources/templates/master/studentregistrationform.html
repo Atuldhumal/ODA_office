@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Strudent Registration</title>
 </head>
 
 <body>
@@ -20,12 +20,13 @@
                     <!-- <div th:replace=" ~{message :: messagebox}"></div> -->
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Student
                         Registration Form</h5>
-                    <p class="font-normal text-gray-400 dark:text-gray-400">Start Managging Student Data</p>
+                    <p class="font-normal text-gray-400 dark:text-gray-400 mb-6">Start Managging Student Data</p>
 
 
 
 
-                    <form class="max-w-md mx-auto">
+                    <form class="max-w-md mx-auto" data-th-action="@{'/master/registerstudent'}" method="post"
+                        data-th-object="${registerstudentForm}" novalidate>
 
                         <div class="grid md:grid-cols-2 md:gap-6">
                             <div class="relative z-0 w-full mb-5 group">
@@ -35,6 +36,9 @@
                                 <label for="firstname"
                                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
                                     name</label>
+                                <p data-th-if="${#fields.hasErrors('firstname')}" data-th-errors="*{firstname}"
+                                    class="text-red-600 py-1"> User is Required </p>
+
                             </div>
                             <div class="relative z-0 w-full mb-5 group">
                                 <input type="text" name="lastname" id="lastname"
@@ -43,8 +47,22 @@
                                 <label for="lastname"
                                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
                                     name</label>
+                                <p data-th-if="${#fields.hasErrors('lastname')}" data-th-errors="*{lastname}"
+                                    class="text-red-600 py-1"> User is Required </p>
                             </div>
                         </div>
+
+                        <div class="relative z-0 w-full mb-5 group">
+                            <input type="address" name="address" id="address"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " required />
+                            <label for="address"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Address</label>
+                            <p data-th-if="${#fields.hasErrors('lastname')}" data-th-errors="*{lastname}"
+                                class="text-red-600 py-1"> User is Required </p>
+                        </div>
+
 
                         <div class="relative z-0 w-full mb-5 group">
                             <input type="email" name="email" id="email"
@@ -53,22 +71,11 @@
                             <label for="email"
                                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
                                 address</label>
+                            <p data-th-if="${#fields.hasErrors('address')}" data-th-errors="*{address}"
+                                class="text-red-600 py-1"> User is Required </p>
+
                         </div>
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="password" name="password" id="password"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
-                            <label for="password"
-                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
-                        </div>
-                        <div class="relative z-0 w-full mb-5 group">
-                            <input type="password" name="repeat_password" id="repeat_password"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
-                            <label for="repeat_password"
-                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm
-                                password</label>
-                        </div>
+
 
                         <div class="grid md:grid-cols-2 md:gap-6">
                             <div class="relative z-0 w-full mb-5 group">
@@ -78,6 +85,8 @@
                                 <label for="phoneno"
                                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone
                                     number</label>
+                                <p data-th-if="${#fields.hasErrors('phoneno')}" data-th-errors="*{phoneno}"
+                                    class="text-red-600 py-1"> User is Required </p>
                             </div>
                             <div class="relative z-0 w-full mb-5 group">
                                 <input type="text" name="parents_phoneno" id="parents_phoneno"
@@ -86,12 +95,14 @@
                                 <label for="parents_phoneno"
                                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Parents
                                     Phone number</label>
+                                <p data-th-if="${#fields.hasErrors('parents_phoneno')}"
+                                    data-th-errors="*{parents_phoneno}" class="text-red-600 py-1"> User is Required </p>
                             </div>
                         </div>
                         <div class="grid md:grid-cols-2 md:gap-6">
                             <div class="relative z-0 w-full mb-5 group">
-                                <label for="Branch" class="sr-only">Underline select</label>
-                                <select id="Branch"
+                                <label for="branch_id" class="sr-only">Underline select</label>
+                                <select id="branch_id"
                                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                                     <option selected>Select Branch </option>
                                     <tr th:each="allbrachdetails : ${allbrachdetails}">
@@ -100,12 +111,13 @@
                                     </tr>
 
                                 </select>
-
+                                <p data-th-if="${#fields.hasErrors('branch_id')}" data-th-errors="*{branch_id}"
+                                    class="text-red-600 py-1"> User is Required </p>
 
                             </div>
                             <div class="relative z-0 w-full mb-5 group ">
-                                <label for="Batch_name" class="sr-only">Underline select</label>
-                                <select id="Batch_name"
+                                <label for="Batch_id" class="sr-only">Underline select</label>
+                                <select id="Batch_id"
                                     class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                                     <option selected>Select Batch </option>
                                     <tr th:each="allbatchDetails : ${allbatchDetails}">
@@ -114,26 +126,35 @@
                                     </tr>
 
                                 </select>
+                                <p data-th-if="${#fields.hasErrors('Batch_id')}" data-th-errors="*{Batch_id}"
+                                    class="text-red-600 py-1"> User is Required </p>
+
                             </div>
                         </div>
 
-                        
-
-                                <label for="about"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                                    message</label>
-                                <textarea id="about" name="about" rows="4"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Write your thoughts here..."></textarea>
 
 
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white "
-                                    for="file_input">Upload file</label>
-                                <input
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                          
-                        
+                        <label for="about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                            message</label>
+                        <textarea id="about" name="about" rows="4"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Write your thoughts here..."></textarea>
+                        <p data-th-if="${#fields.hasErrors('about')}" data-th-errors="*{about}"
+                            class="text-red-600 py-1"> User is Required </p>
+
+
+
+
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white "
+                            for="Profile_pic">Upload file</label>
+                        <input
+                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                            id="Profile_pic" type="file">
+
+                        <p data-th-if="${#fields.hasErrors('Profile_pic')}" data-th-errors="*{Profile_pic}"
+                            class="text-red-600 py-1"> User is Required </p>
+
+
 
 
 
